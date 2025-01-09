@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "strictNullChecks": true,
+        "target": "ES5",
+        "moduleResolution": "Node10",
+        "module": "ESNext",
+        "resolveJsonModule": true,
+        "declaration": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "outDir": "dist",
+        "jsx": "react-jsx",
+        "lib":["dom","dom.iterable","esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
+}
