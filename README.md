@@ -17,9 +17,9 @@ To install the `GlareButton` component, you can use either `npm` or `yarn`:
 ### Using npm:
 ```bash
 npm install glare-button
+```
 
-
-###Usage
+# Usage
 
 ```tsx
 import { GlareButton } from 'glare-button';
@@ -37,4 +37,5 @@ const MyComponent = () => {
       </GlareButton>
     </div>
   );
+```
 };
