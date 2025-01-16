@@ -6,47 +6,15 @@ export interface GlareButtonProps {
   padding?: string;
   onClick?: () => void;
   children?: ReactNode;
+  color?:string;
   icon?: string;
-  Text?: string;
+  iconAlt?: string;
 }
 
-// Keyframe for the moving border effect
-const moveBorder = keyframes`
-  0%{
-    background-position:-100% -100%;
-    top: 0px;
-    left:-2px;
-    right: 0px;
-    bottom:-2px;
-  }
-    25%{
-    background-position:0 0;
-    top: 0px;
-    left:-2px;
-    right: 0px;
-    bottom:0px;
-  }
-    50%{
-      background-position:-50% -50%;
-      top: -2px;
-      left:-2px;
-      right: 0px;
-      bottom:0px;
-    }
 
-    100%{
-      background-position:-100% -100%;
-      top: 0px;
-      left: -2px;
-      right: 0px;
-      bottom:2px;
-  }
-`;
-
-// Keyframe for glowing effect on hover
 const glowAnimation = keyframes`
-  0%,100% {
-    box-shadow: inset 0 0 4px 4px rgba(110, 74, 141, 0.5);
+  0%, 100% {
+    box-shadow: inset 0 0 4px 1px rgba(110, 74, 141, 0.5);
   }
   50% {
     box-shadow: inset 0 0 4px 8px rgba(185, 108, 232, 0.2);
@@ -54,90 +22,56 @@ const glowAnimation = keyframes`
 `;
 
 const concentricCircle = keyframes`
-  0%,100% {
-    box-shadow: 0px 0px 3px 3px rgba(138, 138, 138, 0.1),
-                0px 0px 36px 36px rgba(138, 138, 138, 0.5);
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 180px;
-  height: 60px;
-  border-radius: 50px;
-  border: 2px solid rgb(114, 119, 169);
-  &:hover {
-    animation: ${concentricCircle} 1s infinite;
-    transform: scale(1.1);
-  }
-  transition: transform 0.2s ease-in-out;
-  &:active {
-    transform: scale(0.8);
+  0%, 100% {
+    box-shadow: 0px 0px 2px 2px rgba(35, 32, 200, 0.1),
+                0px 0px 40px 80px rgba(35, 32, 200, 0.1);
   }
 `;
 
 const Button = styled.button<GlareButtonProps>`
   position: relative;
-  width: 100%;
-  height: 100%;
-  padding: ${(props) => props.padding || "10px 20px"};
-  background-color: ${(props) =>
-    props.bgColor || "#6a1b9a"}; /* Default purplish background */
-  color: white;
-  border-radius: 50px;
-  border: none;
+  padding: ${(props) => props.padding || "24px 40px"};
+  background-image: linear-gradient(to bottom,
+    ${(props) => props.bgColor || "#613af3"},
+    #c0affc 150%
+  );
+  color: ${(props)=>props.color||"white"};
+  border-radius: 1000px;
+  border: 4px solid rgb(98, 75, 173);
   font-size: 20px;
   font-weight: bold;
   font-family: "sans-serif";
-  overflow: hidden;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.1s ease-in-out;
-  &:hover {
-    animation: ${glowAnimation} 2s infinite;
-  }
-`;
+  justify-content: space-between;
+  transition: box-shadow 1s ease-in-out;
 
-const MovingBorder = styled.div`
-  position: absolute;
-  border-radius: 50px;
-  background: linear-gradient(
-      90deg,
-      white 15%,
-      ${(props) => props.color || "#6a1b9a"} 5%
-    )
-    no-repeat;
-  background-size: 200% 100%;
-  animation: ${moveBorder} 3s linear infinite;
-  pointer-events: none;
+  &:hover {
+    animation: ${glowAnimation} 2s infinite, ${concentricCircle} 2s infinite;
+    transform: scale(1.05);
+    transition: box-shadow 0.1s ease-in-out;
+  }
+
+  &:active {
+    transform: scale(1);
+    transition: box-shadow 0.1s ease-in-out;
+  }
 `;
 
 const IconWrapper = styled.img`
   width: 20px;
   height: 20px;
-  margin-right: 8px; /* Space between icon and text */
+  margin-right: 8px/* Space between icon and text */
 `;
 
-export const GlareButton: React.FC<GlareButtonProps> = ({
-  children,
-  bgColor,
-  onClick,
-  icon,
-  padding,
-}) => {
-  return (
-    <ButtonWrapper>
-      <MovingBorder />
-      <Button bgColor={bgColor} onClick={onClick} padding={padding}>
-        {icon && <IconWrapper src={icon} alt="icon" />}
-        {children || "Click me!"}
-      </Button>
-    </ButtonWrapper>
-  );
-};
+const GlareButton: React.FC<GlareButtonProps> = React.memo(
+  ({ children, bgColor, onClick, icon, padding, iconAlt,color }) => (
+    <Button bgColor={bgColor} onClick={onClick} padding={padding}>
+      {icon && <IconWrapper src={icon} color={color} alt={iconAlt || "Icon"} />}
+      {children || "Generate Site"}
+    </Button>
+  )
+);
 
 export default GlareButton;
