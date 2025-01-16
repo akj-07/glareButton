@@ -10,7 +10,7 @@
 
 ---
 
-## Installation
+### Installation
 
 To install the `GlareButton` component, you can use either `npm` or `yarn`:
 
