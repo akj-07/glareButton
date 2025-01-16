@@ -1,17 +1,17 @@
 {
   "name": "glarebutton",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "rollup -c",
-    "start": "rollup -cw",
-    "storybook": "start-storybook -p 6006"
-    "repository": {
-    "type": "git",
-    "url": "https://github.com/akj-07/glareButton.git"
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    }
   },
+  "scripts": {
+    "build": "tsup"
   },
   "keywords": [
     "button",
@@ -23,38 +23,37 @@
   ],
   "author": "Ankur Kumar",
   "license": "MIT",
-  "description": "",
+  "description": "A customizable animated button component with a glare effect for React applications.",
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.3",
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-node-resolve": "^16.0.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^12.1.2",
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
-    "@storybook/addon-onboarding": "^8.4.7",
-    "@storybook/blocks": "^8.4.7",
-    "@storybook/react": "^8.4.7",
-    "@storybook/react-vite": "^8.4.7",
-    "@storybook/test": "^8.4.7",
+    "@storybook/addon-essentials": "^8.6.0-alpha.0",
+    "@storybook/addon-interactions": "^8.6.0-alpha.0",
+    "@storybook/addon-onboarding": "^8.6.0-alpha.0",
+    "@storybook/blocks": "^8.6.0-alpha.0",
+    "@storybook/react": "^8.6.0-alpha.0",
+    "@storybook/react-vite": "^8.6.0-alpha.0",
+    "@storybook/test": "^8.6.0-alpha.0",
+    "@swc/core": "^1.10.7",
+    "@vitejs/plugin-react": "^4.3.4",
+    "postcss-preset-env": "^10.1.3",
     "react": "^18.0.2",
     "react-dom": "^18.0.2",
-    "rollup": "^4.30.1",
-    "rollup-plugin-dts": "^6.1.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "storybook": "^8.4.7",
-    "tsup": "^8.3.5",
+    "storybook": "^8.6.0-alpha.0",
+    "styled-components": "^6.1.14",
+    "tsup": "^6.0.0",
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.0.0 || ^17.0.0 || ^18.0.0"
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "dependencies": {
     "@types/react": "^18.0.2",
     "@types/react-dom": "^18.0.2",
-    "glarebutton": "file:",
-    "glareButton": "file:",
-    "styled-components": "^6.1.14"
+    "glarebutton": "file:"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akj-07/glareButton.git"
   }
 }
