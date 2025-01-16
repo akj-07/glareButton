@@ -22,7 +22,7 @@ npm install glare-button
 # Usage
 
 ```tsx
-import { GlareButton } from 'glare-button';
+import { GlareButton } from 'glarebutton';
 
 const MyComponent = () => {
   return (
