@@ -65,8 +65,3 @@ Open a pull request.
 ### 📝 License
 
 This project is licensed under the MIT License.
-
-### 👤 Author
-
-Created by Ankur Kumar.
-Feel free to reach out on [GitHub](https://github.com/akj-07/glareButton/) for any questions or collaboration!
